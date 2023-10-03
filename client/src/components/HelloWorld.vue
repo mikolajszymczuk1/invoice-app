@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-[2em] text-center">
+  <h1 class="text-[2em] text-center font-spartan">
     {{ msg }}
   </h1>
 </template>
@@ -8,10 +8,14 @@
 import { ref, type Ref, onMounted } from 'vue';
 import { getExampleMessage } from '@/services/exampleService';
 
-const msg: Ref<string> = ref('Hello Wrold !');
+const msg: Ref<string> = ref('Hello World !');
 
 onMounted(async (): Promise<void> => {
+  try {
     msg.value = await getExampleMessage();
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 </script>
