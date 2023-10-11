@@ -1,21 +1,24 @@
 <template>
   <h1 class="text-[2em] text-center font-spartan">
-    {{ msg }}
+    <template v-for="message in messages" :key="message.id">
+      {{ message.msg }}<br>
+    </template>
   </h1>
 </template>
 
 <script setup lang="ts">
 import { ref, type Ref, onMounted } from 'vue';
-import { getExampleMessage } from '@/services/exampleService';
+import { getExampleMessages } from '@/services/exampleService';
+import type { Example } from '@/types/Example';
 
-const msg: Ref<string> = ref('Hello World !');
+/** Example messages data */
+const messages: Ref<Example[]> = ref([]);
 
 onMounted(async (): Promise<void> => {
   try {
-    msg.value = await getExampleMessage();
+    messages.value = await getExampleMessages();
   } catch (e) {
     console.log(e);
   }
 });
-
 </script>
