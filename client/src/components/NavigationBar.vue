@@ -1,8 +1,8 @@
 <template>
   <nav class="flex justify-between items-center bg-blue-navLight">
     <div
-      class="flex justify-center items-center relative w-[72px] h-[72px] rounded-r-[20px] overflow-hidden bg-purple-medium before:absolute before:bottom-0 before:left-0 before:h-[50%]
-        before:w-full before:bg-purple-light before:rounded-tl-[20px] before:z-[1]"
+      class="flex justify-center items-center relative w-[72px] h-[72px] rounded-r-[20px] overflow-hidden bg-purple-medium before:absolute
+        before:bottom-0 before:left-0 before:h-[50%] before:w-full before:bg-purple-light before:rounded-tl-[20px] before:z-[1]"
     >
       <LogoIcon class="relative z-[2]" />
     </div>
@@ -19,7 +19,7 @@
   </nav>
 </template>
 
-<script setup lang=ts>
+<script setup lang="ts">
 import { ref, type Ref } from 'vue';
 
 import LogoIcon from '@/components/icons/LogoIcon.vue';
