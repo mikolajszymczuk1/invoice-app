@@ -33,6 +33,10 @@ module.exports = {
     fontFamily: {
       spartan: ['League Spartan', 'sans-serif'],
     },
+    screens: {
+      md: '768px',
+      lg: '1024px',
+    },
   },
   plugins: [],
 }
