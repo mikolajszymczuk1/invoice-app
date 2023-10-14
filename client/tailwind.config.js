@@ -21,6 +21,7 @@ module.exports = {
         navBorder: '#494E6E',
       },
       white: '#F8F8FB',
+      trueWhite: '#FFFFFF',
       gray: {
         light: '#DFE3FA',
         medium: '#888EB0',
@@ -31,12 +32,21 @@ module.exports = {
       },
     },
     fontFamily: {
-      spartan: ['League Spartan', 'sans-serif'],
+      spartan: ['Spartan', 'sans-serif'],
     },
     screens: {
       md: '768px',
       lg: '1024px',
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+    require('@tailwindcss/forms'),
+  ],
+  daisyui: {
+    themes: false,
+    darkTheme: 'dark',
+    base: false,
+    logs: false,
+  },
 }
