@@ -10,11 +10,21 @@
         <b>New</b> button and get started
       </h3>
     </div>
+
+    <div>
+      <InvoiceElement />
+      <InvoiceElement />
+      <InvoiceElement />
+      <InvoiceElement />
+      <InvoiceElement />
+    </div>
   </ViewContainer>
+
 </template>
 
 <script setup lang="ts">
 import FilterSection from '@/widgets/FilterSection.vue';
 import ViewContainer from '@/components/ViewContainer.vue';
 import NothingIllustration from '@/components/illustrations/NothingIllustration.vue';
+import InvoiceElement from '@/components/InvoiceElement.vue';
 </script>
