@@ -2,7 +2,7 @@
   <ViewContainer>
     <FilterSection />
 
-    <div class="flex flex-col items-center mt-[102px] text-center font-spartan md:mt-[210px]">
+    <div v-if="false" class="flex flex-col items-center mt-[102px] text-center font-spartan md:mt-[210px]">
       <NothingIllustration class="md:w-[241px] md:h-auto" />
       <h2 class="mt-[40px] mb-[24px] text-blue-dark text-[1.25rem] font-bold md:mt-[64px]">There is nothing here</h2>
       <h3 class="text-gray-medium text-[.75rem]">
