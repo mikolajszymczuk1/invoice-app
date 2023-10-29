@@ -11,18 +11,37 @@
       </h3>
     </div>
 
-    <div>
-      <InvoiceElement />
-      <InvoiceElement />
-      <InvoiceElement />
-      <InvoiceElement />
-      <InvoiceElement />
+    <div v-if="true" class="flex flex-col gap-y-[16px] mt-[32px] md:mt-[56px] lg:gap-y-[12px] lg:mt-[65px]">
+      <InvoiceElement
+        invoice-id="XY1080"
+        client-name="Person 1"
+        :payment-due="1698493681658"
+        :total-cost="11052.25"
+        :status="InvoiceStatusEnum.PAID"
+      />
+
+      <InvoiceElement
+        invoice-id="RY3087"
+        client-name="Person 2"
+        :payment-due="1698493681658"
+        :total-cost="1800.90"
+        :status="InvoiceStatusEnum.PENDING"
+      />
+
+      <InvoiceElement
+        invoice-id="RW0770"
+        client-name="Person 3"
+        :payment-due="1698493681658"
+        :total-cost="357.86"
+        :status="InvoiceStatusEnum.DRAFT"
+      />
     </div>
   </ViewContainer>
-
 </template>
 
 <script setup lang="ts">
+import { InvoiceStatusEnum } from '@/enums/InvoiceStatusEnum';
+
 import FilterSection from '@/widgets/FilterSection.vue';
 import ViewContainer from '@/components/ViewContainer.vue';
 import NothingIllustration from '@/components/illustrations/NothingIllustration.vue';

@@ -30,6 +30,11 @@ module.exports = {
         medium: '#EC5757',
         light: '#9277FF',
       },
+      invoice: {
+        paid: '#33D69F',
+        pending: '#FF8F00',
+        draft: '#373B53',
+      },
     },
     fontFamily: {
       spartan: ['Spartan', 'sans-serif'],
