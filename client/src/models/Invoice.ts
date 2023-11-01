@@ -59,5 +59,15 @@ export default class Invoice {
     return total;
   }
 
+  /**
+   * Returns payment due date
+   * @returns {number} The payment due date
+  */
+ get paymentDue(): number {
+  const date = new Date(this.invoiceDate);
+  date.setDate(date.getDate() + this.paymentTerms);
+  return date.getTime();
+ }
+
   // TODO: Implement method to generate an invoice ID.
 }
