@@ -1,0 +1,442 @@
+[
+  {
+    "invoiceId": "AB1234",
+    "status": "paid",
+    "streetAddressFrom": "ul. Przykładowa 1",
+    "cityFrom": "Warszawa",
+    "postCodeFrom": "00001",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 2",
+    "cityTo": "Kraków",
+    "postCodeTo": "30002",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 1",
+    "clientEmail": "klient1@przykladowa-firma.pl",
+    "invoiceDate": 1698493681658,
+    "paymentTerms": 14,
+    "projectDescription": "Usługi konsultingowe",
+    "items": [
+      {
+        "itemName": "Konsultacje",
+        "qty": 10,
+        "price": 150.00
+      },
+      {
+        "itemName": "Analiza biznesowa",
+        "qty": 5,
+        "price": 300.00
+      },
+      {
+        "itemName": "Raport",
+        "qty": 2,
+        "price": 200.00
+      },
+      {
+        "itemName": "Szkolenie",
+        "qty": 20,
+        "price": 50.00
+      },
+      {
+        "itemName": "Wsparcie techniczne",
+        "qty": 8,
+        "price": 100.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "CD5678",
+    "status": "pending",
+    "streetAddressFrom": "ul. Przykładowa 3",
+    "cityFrom": "Kraków",
+    "postCodeFrom": "30003",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 4",
+    "cityTo": "Warszawa",
+    "postCodeTo": "00004",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 2",
+    "clientEmail": "klient2@przykladowa-firma.pl",
+    "invoiceDate": 1698493682658,
+    "paymentTerms": 30,
+    "projectDescription": "Dostawa sprzętu komputerowego",
+    "items": [
+      {
+        "itemName": "Laptop",
+        "qty": 5,
+        "price": 1500.00
+      },
+      {
+        "itemName": "Monitor",
+        "qty": 10,
+        "price": 300.00
+      },
+      {
+        "itemName": "Klawiatura",
+        "qty": 8,
+        "price": 50.00
+      },
+      {
+        "itemName": "Myszka",
+        "qty": 12,
+        "price": 20.00
+      },
+      {
+        "itemName": "Drukarka",
+        "qty": 3,
+        "price": 200.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "EF9012",
+    "status": "draft",
+    "streetAddressFrom": "ul. Przykładowa 5",
+    "cityFrom": "Gdańsk",
+    "postCodeFrom": "80005",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 6",
+    "cityTo": "Poznań",
+    "postCodeTo": "60006",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 3",
+    "clientEmail": "klient3@przykladowa-firma.pl",
+    "invoiceDate": 1698493683658,
+    "paymentTerms": 7,
+    "projectDescription": "Remont biura",
+    "items": [
+      {
+        "itemName": "Farba",
+        "qty": 10,
+        "price": 30.00
+      },
+      {
+        "itemName": "Płyta gipsowa",
+        "qty": 20,
+        "price": 15.00
+      },
+      {
+        "itemName": "Kafelki",
+        "qty": 5,
+        "price": 40.00
+      },
+      {
+        "itemName": "Narzędzia remontowe",
+        "qty": 1,
+        "price": 200.00
+      },
+      {
+        "itemName": "Usługi remontowe",
+        "qty": 40,
+        "price": 50.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "GH3456",
+    "status": "paid",
+    "streetAddressFrom": "ul. Przykładowa 7",
+    "cityFrom": "Poznań",
+    "postCodeFrom": "60007",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 8",
+    "cityTo": "Gdańsk",
+    "postCodeTo": "80008",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 4",
+    "clientEmail": "klient4@przykladowa-firma.pl",
+    "invoiceDate": 1698493684658,
+    "paymentTerms": 1,
+    "projectDescription": "Usługi informatyczne",
+    "items": [
+      {
+        "itemName": "Serwer",
+        "qty": 2,
+        "price": 3000.00
+      },
+      {
+        "itemName": "Oprogramowanie",
+        "qty": 5,
+        "price": 500.00
+      },
+      {
+        "itemName": "Instalacja",
+        "qty": 1,
+        "price": 1000.00
+      },
+      {
+        "itemName": "Wsparcie techniczne",
+        "qty": 30,
+        "price": 50.00
+      },
+      {
+        "itemName": "Szkolenie pracowników",
+        "qty": 10,
+        "price": 150.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "IJ6789",
+    "status": "pending",
+    "streetAddressFrom": "ul. Przykładowa 9",
+    "cityFrom": "Łódź",
+    "postCodeFrom": "40009",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 10",
+    "cityTo": "Wrocław",
+    "postCodeTo": "50010",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 5",
+    "clientEmail": "klient5@przykladowa-firma.pl",
+    "invoiceDate": 1698493685658,
+    "paymentTerms": 7,
+    "projectDescription": "Dostawa mebli biurowych",
+    "items": [
+      {
+        "itemName": "Biurko",
+        "qty": 10,
+        "price": 250.00
+      },
+      {
+        "itemName": "Krzesło biurowe",
+        "qty": 20,
+        "price": 100.00
+      },
+      {
+        "itemName": "Szafa na dokumenty",
+        "qty": 5,
+        "price": 300.00
+      },
+      {
+        "itemName": "Stolik kawowy",
+        "qty": 4,
+        "price": 80.00
+      },
+      {
+        "itemName": "Regał na książki",
+        "qty": 8,
+        "price": 120.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "KL2345",
+    "status": "draft",
+    "streetAddressFrom": "ul. Przykładowa 12",
+    "cityFrom": "Kraków",
+    "postCodeFrom": "30012",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 14",
+    "cityTo": "Warszawa",
+    "postCodeTo": "00014",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 6",
+    "clientEmail": "klient6@przykladowa-firma.pl",
+    "invoiceDate": 1698493686658,
+    "paymentTerms": 30,
+    "projectDescription": "Usługi marketingowe",
+    "items": [
+      {
+        "itemName": "Kampania reklamowa",
+        "qty": 1,
+        "price": 5000.00
+      },
+      {
+        "itemName": "Projekt graficzny",
+        "qty": 3,
+        "price": 1000.00
+      },
+      {
+        "itemName": "Konsultacje marketingowe",
+        "qty": 6,
+        "price": 200.00
+      },
+      {
+        "itemName": "Reklama w mediach społecznościowych",
+        "qty": 12,
+        "price": 50.00
+      },
+      {
+        "itemName": "Analiza konkurencji",
+        "qty": 1,
+        "price": 800.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "MN4567",
+    "status": "paid",
+    "streetAddressFrom": "ul. Przykładowa 15",
+    "cityFrom": "Gdańsk",
+    "postCodeFrom": "80015",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 16",
+    "cityTo": "Poznań",
+    "postCodeTo": "60016",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 7",
+    "clientEmail": "klient7@przykladowa-firma.pl",
+    "invoiceDate": 1698493687658,
+    "paymentTerms": 1,
+    "projectDescription": "Dostawa materiałów budowlanych",
+    "items": [
+      {
+        "itemName": "Cement",
+        "qty": 50,
+        "price": 10.00
+      },
+      {
+        "itemName": "Cegły",
+        "qty": 2000,
+        "price": 0.50
+      },
+      {
+        "itemName": "Deski",
+        "qty": 100,
+        "price": 5.00
+      },
+      {
+        "itemName": "Druty zbrojeniowe",
+        "qty": 20,
+        "price": 15.00
+      },
+      {
+        "itemName": "Farba",
+        "qty": 30,
+        "price": 20.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "OP7890",
+    "status": "pending",
+    "streetAddressFrom": "ul. Przykładowa 18",
+    "cityFrom": "Wrocław",
+    "postCodeFrom": "50018",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 20",
+    "cityTo": "Łódź",
+    "postCodeTo": "40020",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 8",
+    "clientEmail": "klient8@przykladowa-firma.pl",
+    "invoiceDate": 1698493688658,
+    "paymentTerms": 7,
+    "projectDescription": "Usługi transportowe",
+    "items": [
+      {
+        "itemName": "Przewóz towarów",
+        "qty": 5,
+        "price": 200.00
+      },
+      {
+        "itemName": "Koszty załadunku/rozładunku",
+        "qty": 2,
+        "price": 100.00
+      },
+      {
+        "itemName": "Opłaty drogowe",
+        "qty": 10,
+        "price": 50.00
+      },
+      {
+        "itemName": "Paliwo",
+        "qty": 1000,
+        "price": 2.00
+      },
+      {
+        "itemName": "Najem samochodu",
+        "qty": 1,
+        "price": 500.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "QR1234",
+    "status": "draft",
+    "streetAddressFrom": "ul. Przykładowa 22",
+    "cityFrom": "Warszawa",
+    "postCodeFrom": "00022",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 24",
+    "cityTo": "Kraków",
+    "postCodeTo": "30024",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 9",
+    "clientEmail": "klient9@przykladowa-firma.pl",
+    "invoiceDate": 1698493689658,
+    "paymentTerms": 30,
+    "projectDescription": "Usługi serwisowe",
+    "items": [
+      {
+        "itemName": "Naprawa sprzętu",
+        "qty": 3,
+        "price": 300.00
+      },
+      {
+        "itemName": "Zamiana podzespołów",
+        "qty": 2,
+        "price": 200.00
+      },
+      {
+        "itemName": "Aktualizacja oprogramowania",
+        "qty": 5,
+        "price": 100.00
+      },
+      {
+        "itemName": "Wsparcie telefoniczne",
+        "qty": 20,
+        "price": 30.00
+      },
+      {
+        "itemName": "Diagnostyka usterki",
+        "qty": 10,
+        "price": 50.00
+      }
+    ]
+  },
+  {
+    "invoiceId": "ST5678",
+    "status": "paid",
+    "streetAddressFrom": "ul. Przykładowa 26",
+    "cityFrom": "Poznań",
+    "postCodeFrom": "60026",
+    "countryFrom": "Polska",
+    "streetAddressTo": "ul. Odbiorcza 28",
+    "cityTo": "Gdańsk",
+    "postCodeTo": "80028",
+    "countryTo": "Polska",
+    "clientName": "Firma Klienta 10",
+    "clientEmail": "klient10@przykladowa-firma.pl",
+    "invoiceDate": 1698493690658,
+    "paymentTerms": 1,
+    "projectDescription": "Dostawa artykułów spożywczych",
+    "items": [
+      {
+        "itemName": "Mąka",
+        "qty": 50,
+        "price": 5.00
+      },
+      {
+        "itemName": "Ryż",
+        "qty": 30,
+        "price": 3.00
+      },
+      {
+        "itemName": "Mleko",
+        "qty": 100,
+        "price": 2.00
+      },
+      {
+        "itemName": "Jaja",
+        "qty": 60,
+        "price": 0.50
+      },
+      {
+        "itemName": "Chleb",
+        "qty": 40,
+        "price": 2.50
+      }
+    ]
+  }
+]
