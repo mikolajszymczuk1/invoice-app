@@ -28,7 +28,7 @@
 
     <div v-else class="flex flex-col gap-y-[16px] mt-[32px] md:mt-[56px] lg:gap-y-[12px] lg:mt-[65px]">
       <InvoiceElement
-        v-for="invoice in invoices"
+        v-for="invoice in filteredInvoices"
         :key="invoice.invoiceId"
         :invoice-id="invoice.invoiceId"
         :client-name="invoice.clientName"
@@ -41,20 +41,36 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue';
+import { onMounted, ref, type Ref, computed, watch } from 'vue';
 import { getInvoices } from '@/services/invoiceService';
 import type Invoice from '@/models/Invoice';
+import { useInvoiceStore } from '@/stores/invoiceStore';
 
 import FilterSection from '@/widgets/FilterSection.vue';
 import ViewContainer from '@/components/ViewContainer.vue';
 import NothingIllustration from '@/components/illustrations/NothingIllustration.vue';
 import InvoiceElement from '@/components/InvoiceElement.vue';
 
+const store = useInvoiceStore();
+
 /** Array of invoices */
 const invoices: Ref<Invoice[]> = ref([]);
 
 /** Data loaded status */
 const isDataLoaded: Ref<boolean> = ref(false);
+
+/**
+ * Get filtered invoices
+ * @returns {Invoice[]} filtered invoices
+*/
+const filteredInvoices = computed<Invoice[]>(() => {
+  if (store.filterBy.length === 0) return invoices.value;
+  return invoices.value.filter((invoice: Invoice) => store.filterBy.includes(invoice.status));
+});
+
+watch(() => store.filterBy, () => {
+  store.invoicesCount = filteredInvoices.value.length;
+}, { deep: true });
 
 onMounted(async () => {
   try {
@@ -63,6 +79,7 @@ onMounted(async () => {
     console.warn(e);
   } finally {
     isDataLoaded.value = true;
+    store.invoicesCount = invoices.value.length;
   }
 });
 </script>

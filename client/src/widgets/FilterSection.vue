@@ -2,7 +2,14 @@
   <div class="flex items-center justify-between">
     <div class="font-spartan">
       <h1 class="mb-[4px] text-blue-dark font-bold text-[1.25rem] md:mb-[8px] md:text-[2rem]">Invoices</h1>
-      <p class="text-gray-medium font-medium text-[.75rem]">7 invoices</p>
+      <p class="text-gray-medium font-medium text-[.75rem]">
+        <span v-if="store.invoicesCount > 0">
+          <span class="hidden md:inline">There are </span>{{ store.invoicesCount }}
+          <span class="hidden md:inline"> total</span> invoices
+        </span>
+
+        <span v-else>No invoices</span>
+      </p>
     </div>
 
     <div class="flex items-center">
@@ -12,7 +19,7 @@
             text-[.75rem] normal-case text-blue-dark md:gap-x-[16px]"
           @click="toggleDropdown()"
         >
-          Filter
+          <span>Filter <span class="hidden md:inline"> by status</span></span>
           <DropDownArrowIcon class="transition-transform" :class="dropdownActive ? 'rotate-[180deg]' : ''" />
         </summary>
 
@@ -24,6 +31,8 @@
             <label class="label justify-start gap-x-[13px] p-0 cursor-pointer hover:bg-transparent focus:!bg-transparent active:!bg-transparent">
               <input
                 type="checkbox"
+                :value="option.toLowerCase()"
+                v-model="store.filterBy"
                 style="box-shadow: none;"
                 class="w-[16px] h-[16px] rounded-[2px] bg-gray-light border-none checked:bg-purple-medium checked:hover:bg-purple-medium
                   checked:focus:bg-purple-medium transition-colors hover:border-[1px] hover:border-solid hover:border-purple-medium"
@@ -35,16 +44,21 @@
         </ul>
       </details>
 
-      <ActionButton class="!h-[44px] md:!h-[48px]">New</ActionButton>
+      <ActionButton class="!h-[44px] md:!h-[48px]">
+        <span>New <span class="hidden md:inline"> Invoice</span></span>
+      </ActionButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import { useInvoiceStore } from '@/stores/invoiceStore';
 
 import ActionButton from '@/components/buttons/ActionButton.vue';
 import DropDownArrowIcon from '@/components/icons/DropDownArrowIcon.vue';
+
+const store = useInvoiceStore();
 
 /** Dropdown active status */
 const dropdownActive: Ref<boolean> = ref(false);
