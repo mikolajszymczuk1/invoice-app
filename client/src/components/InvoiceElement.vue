@@ -3,6 +3,7 @@
     class="grid grid-rows-[repeat(3,auto)] grid-cols-[repeat(2,auto)] p-[24px] bg-trueWhite rounded-[8px]
       shadow-[0_10px_10px_-10px_rgba(71,84,159,0.1)] text-blue-dark font-spartan md:grid-rows-1 md:grid-cols-[87px_1fr_1fr_1fr_auto_auto]
       md:items-center md:justify-between md:py-[16px] lg:grid-cols-[103px_1fr_1fr_1fr_auto_auto] lg:px-[32px]"
+    @click="emit('clickAction')"
   >
     <div class="row-start-1 row-end-2 col-start-1 col-end-2 mb-[24px] text-[.75rem] font-bold md:mb-0">
       <span class="text-blue-light">#</span>{{ invoiceId }}
@@ -71,6 +72,11 @@ const props = defineProps({
     },
   },
 });
+
+const emit = defineEmits<{
+  /** Emit event after click invoice */
+  (e: 'clickAction'): void
+}>();
 
 /**
  * Return payment date

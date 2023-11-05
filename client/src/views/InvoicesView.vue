@@ -6,15 +6,7 @@
       v-if="invoices.length === 0"
       class="flex flex-col items-center mt-[102px] text-center font-spartan md:mt-[210px]"
     >
-      <div
-        v-if="!isDataLoaded"
-        class="flex flex-col items-center text-purple-medium"
-      >
-        <div class="loading loading-ring loading-lg mb-[20px]"></div>
-        <span class="text-[0.85rem]">Searching invoices ...</span>
-      </div>
-
-      <template v-else>
+      <template v-if="isDataLoaded">
         <NothingIllustration class="md:w-[241px] md:h-auto" />
         <h2 class="mt-[40px] mb-[24px] text-blue-dark text-[1.25rem] font-bold md:mt-[64px]">
           There is nothing here
@@ -24,6 +16,8 @@
           <b>New</b> button and get started
         </h3>
       </template>
+
+      <DataLoader v-else>Searching invoices ...</DataLoader>
     </div>
 
     <div v-else class="flex flex-col gap-y-[16px] mt-[32px] md:mt-[56px] lg:gap-y-[12px] lg:mt-[65px]">
@@ -35,6 +29,7 @@
         :payment-due="invoice.paymentDue"
         :total-cost="invoice.totalCost"
         :status="invoice.status"
+        @click-action="router.push({ name: 'details', params: { invoiceId: invoice.invoiceId } })"
       />
     </div>
   </ViewContainer>
@@ -42,6 +37,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, type Ref, computed, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { getInvoices } from '@/services/invoiceService';
 import type Invoice from '@/models/Invoice';
 import { useInvoiceStore } from '@/stores/invoiceStore';
@@ -50,8 +46,10 @@ import FilterSection from '@/widgets/FilterSection.vue';
 import ViewContainer from '@/components/ViewContainer.vue';
 import NothingIllustration from '@/components/illustrations/NothingIllustration.vue';
 import InvoiceElement from '@/components/InvoiceElement.vue';
+import DataLoader from '@/components/loaders/DataLoader.vue';
 
 const store = useInvoiceStore();
+const router = useRouter();
 
 /** Array of invoices */
 const invoices: Ref<Invoice[]> = ref([]);
@@ -72,14 +70,14 @@ watch(() => store.filterBy, () => {
   store.invoicesCount = filteredInvoices.value.length;
 }, { deep: true });
 
-onMounted(async () => {
+onMounted(async (): Promise<void> => {
   try {
     invoices.value = await getInvoices();
   } catch (e) {
     console.warn(e);
   } finally {
     isDataLoaded.value = true;
-    store.invoicesCount = invoices.value.length;
+    store.invoicesCount = filteredInvoices.value.length;
   }
 });
 </script>

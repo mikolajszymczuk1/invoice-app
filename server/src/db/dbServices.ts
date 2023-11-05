@@ -53,3 +53,25 @@ export const getAllInvoices = async (): Promise<Invoice[]> => {
 
   return invoices;
 };
+
+/**
+ * Get single invoice with specific id from database
+ * @param {string} invoiceId invoice id
+ * @returns Single invoice
+ */
+export const getSingleInvoice = async (invoiceId: string): Promise<Invoice> => {
+  let invoice: Invoice;
+
+  try {
+    await client.connect();
+    const database = client.db(DATABASE_NAME);
+    const collection = database.collection(COLLECTION_NAME);
+    const cursor = collection.find({ invoiceId: invoiceId });
+    const result = await cursor.toArray();
+    invoice = InvoiceMapper.mapObjectToInvoice(result[0]);
+  } finally {
+    await client.close();
+  }
+
+  return invoice;
+};

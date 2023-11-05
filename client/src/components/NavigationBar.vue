@@ -19,7 +19,7 @@
       >
         <img
           class="lg:w-[40px]"
-          src="src/assets/images/Avatar.png"
+          :src="avatarImage"
           alt="Avatar image"
           title="Avatar"
         >
@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import avatarImage from '@/assets/images/Avatar.png';
 
 import LogoIcon from '@/components/icons/LogoIcon.vue';
 import SunIcon from '@/components/icons/SunIcon.vue';
