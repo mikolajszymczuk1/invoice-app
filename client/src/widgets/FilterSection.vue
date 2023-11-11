@@ -44,7 +44,7 @@
         </ul>
       </details>
 
-      <ActionButton class="!h-[44px] md:!h-[48px]">
+      <ActionButton class="!h-[44px] md:!h-[48px]" with-icon>
         <span>New <span class="hidden md:inline"> Invoice</span></span>
       </ActionButton>
     </div>

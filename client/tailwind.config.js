@@ -19,6 +19,7 @@ module.exports = {
         mediumDark: '#141625',
         navLight: '#373B53',
         navBorder: '#494E6E',
+        itemsPrev: '#F9FAFE'
       },
       white: '#F8F8FB',
       trueWhite: '#FFFFFF',

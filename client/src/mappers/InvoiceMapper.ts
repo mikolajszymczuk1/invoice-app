@@ -1,5 +1,5 @@
-import Invoice from '../models/Invoice';
-import Item from '../models/Item';
+import Invoice from '@/models/Invoice';
+import Item from '@/models/Item';
 
 export default class InvoiceMapper {
   /**
