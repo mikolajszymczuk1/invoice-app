@@ -7,6 +7,7 @@
       withIcon ? 'pl-[6px] pr-[14px] md:pl-[8px] md:pr-[15px]' : 'px-[24px]',
       btnColors,
     ]"
+    @click="emitClickAction()"
   >
     <PlusCircleIcon v-if="withIcon" />
     <slot></slot>
@@ -32,6 +33,12 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits<{
+  /** Emit click action that can be handled */
+  (e: 'clickAction'): void
+}>();
+
+
 /** Returns buttons colors classes based on `btnColor` prop */
 const btnColors = computed<string>(() => {
   const lightColors = 'bg-blue-itemsPrev hover:bg-blue-itemsPrev/60 text-blue-light';
@@ -45,4 +52,7 @@ const btnColors = computed<string>(() => {
     default: return purpleColors;
   }
 });
+
+/** Emit click action */
+const emitClickAction = () => emit('clickAction');
 </script>
