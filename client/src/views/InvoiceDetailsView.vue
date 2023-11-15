@@ -20,7 +20,7 @@
             md:static md:flex-1 md:justify-end md:py-0 md:w-auto md:shadow-none"
         >
           <ActionButton btn-color="light">Edit</ActionButton>
-          <ActionButton btn-color="red">Delete</ActionButton>
+          <ActionButton btn-color="red" onclick="deletionPopup.showModal()">Delete</ActionButton>
 
           <ActionButton
             btn-color="purple"
@@ -114,6 +114,19 @@
     </template>
 
     <DataLoader class="mt-[50px]" v-else>Loading invoice data ...</DataLoader>
+
+    <ActionPopup
+      popup-id="deletionPopup"
+      action-button-text="Delete"
+      action-button-color="red"
+      :button-function="handleDeleteInvoice"
+    >
+      <template #popupTitle>Confirm Deletion</template>
+      <template #popupContent>
+        Are you sure you want to delete invoice #{{ store.currentInvoice.invoiceId }}?
+        This action cannot be undone.
+      </template>
+    </ActionPopup>
   </ViewContainer>
 </template>
 
@@ -121,7 +134,7 @@
 import { ref, type Ref, onMounted, computed } from 'vue';
 import Invoice from '@/models/Invoice';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { getSingleInvoice, changeInvoiceStatus } from '@/services/invoiceService';
+import { getSingleInvoice, changeInvoiceStatus, deleteInvoice } from '@/services/invoiceService';
 import { useInvoiceStore } from '@/stores/invoiceStore';
 import { useFormatDate } from '@/composables/dateFormatting';
 import { InvoiceStatusEnum } from '@/enums/InvoiceStatusEnum';
@@ -131,6 +144,7 @@ import DataLoader from '@/components/loaders/DataLoader.vue';
 import DropDownArrowIcon from '@/components/icons/DropDownArrowIcon.vue';
 import InvoiceStatus from '@/components/InvoiceStatus.vue';
 import ActionButton from '@/components/buttons/ActionButton.vue';
+import ActionPopup from '@/components/modals/ActionPopup.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -174,6 +188,19 @@ const handleChangeInvoiceStatus = async (newStatus: string): Promise<void> => {
   } catch (e) {
     console.warn(e);
     router.go(0); // If there is problem with changing data, refresh page
+  }
+};
+
+/** Delete current invoice */
+const handleDeleteInvoice = async (): Promise<void> => {
+  isDataLoaded.value = false;
+
+  try {
+    await deleteInvoice(store.currentInvoice.invoiceId);
+    router.push({ name: 'homepage' });
+  } catch (e) {
+    console.warn(e);
+    router.go(0); // If there is problem with deleting invoice, refresh page
   }
 };
 </script>

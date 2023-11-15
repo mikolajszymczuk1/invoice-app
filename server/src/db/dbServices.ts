@@ -59,9 +59,32 @@ export const changeInvoiceStatus = async (invoiceId: string, newStatus: string):
     await client.connect();
     const database = client.db(DATABASE_NAME);
     const collection = database.collection(COLLECTION_NAME);
-    collection.updateOne({ invoiceId }, { $set: { status: newStatus } });
+    const cursor = collection.find({ invoiceId });
+    await collection.updateOne({ invoiceId }, { $set: { status: newStatus } });
+    const result = await cursor.toArray();
+    invoice = InvoiceMapper.mapObjectToInvoice(result[0]);
+  } finally {
+    await client.close();
+  }
+
+  return invoice;
+};
+
+/**
+ * Delete invoice
+ * @param {string} invoiceId invoice id
+ * @returns {Invoice} deleted invoice object
+ */
+export const deleteInvoice = async (invoiceId: string): Promise<Invoice> => {
+  let invoice: Invoice;
+
+  try {
+    await client.connect();
+    const database = client.db(DATABASE_NAME);
+    const collection = database.collection(COLLECTION_NAME);
     const cursor = collection.find({ invoiceId });
     const result = await cursor.toArray();
+    await collection.deleteOne({ invoiceId });
     invoice = InvoiceMapper.mapObjectToInvoice(result[0]);
   } finally {
     await client.close();

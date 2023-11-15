@@ -31,3 +31,14 @@ export const changeInvoiceStatus = async (invoiceId: string, newStatus: string):
   const data = response.data;
   return InvoiceMapper.mapObjectToInvoice(data);
 };
+
+/**
+ * Delete invoice
+ * @param {string} invoiceId invoice id to delete
+ * @returns {Invoice} deleted invoice object
+ */
+export const deleteInvoice = async (invoiceId: string): Promise<Invoice> => {
+  const response = await axios.delete(`/api/invoices/${invoiceId}`);
+  const data = response.data;
+  return InvoiceMapper.mapObjectToInvoice(data);
+};
