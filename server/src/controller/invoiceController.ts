@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllInvoices, getSingleInvoice, changeInvoiceStatus } from '../db/dbServices';
+import { getAllInvoices, getSingleInvoice, changeInvoiceStatus } from '@/db/dbServices';
 
 /**
  * Get all invoices action to get all invoices from database
