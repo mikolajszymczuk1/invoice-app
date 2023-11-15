@@ -9,6 +9,7 @@ dotenv.config();
 
 const app: Express = express();
 
+app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use('/api', api);

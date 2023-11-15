@@ -2,7 +2,6 @@ import { client } from '../db/client';
 import { ObjectId } from 'mongodb';
 import type { Example } from '../types/Example';
 import Invoice from '../models/Invoice';
-import Item from '../models/Item';
 import InvoiceMapper from '../mappers/InvoiceMapper';
 
 // Example database / collection data
@@ -66,7 +65,31 @@ export const getSingleInvoice = async (invoiceId: string): Promise<Invoice> => {
     await client.connect();
     const database = client.db(DATABASE_NAME);
     const collection = database.collection(COLLECTION_NAME);
-    const cursor = collection.find({ invoiceId: invoiceId });
+    const cursor = collection.find({ invoiceId });
+    const result = await cursor.toArray();
+    invoice = InvoiceMapper.mapObjectToInvoice(result[0]);
+  } finally {
+    await client.close();
+  }
+
+  return invoice;
+};
+
+/**
+ * Change invoice status
+ * @param {string} invoiceId invoice id
+ * @param {string} newStatus new status to set
+ * @returns {Invoice} updated invoice object
+ */
+export const changeInvoiceStatus = async (invoiceId: string, newStatus: string): Promise<Invoice> => {
+  let invoice: Invoice;
+
+  try {
+    await client.connect();
+    const database = client.db(DATABASE_NAME);
+    const collection = database.collection(COLLECTION_NAME);
+    collection.updateOne({ invoiceId }, { $set: { status: newStatus } });
+    const cursor = collection.find({ invoiceId });
     const result = await cursor.toArray();
     invoice = InvoiceMapper.mapObjectToInvoice(result[0]);
   } finally {

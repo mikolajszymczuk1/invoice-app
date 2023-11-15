@@ -21,7 +21,13 @@
         >
           <ActionButton btn-color="light">Edit</ActionButton>
           <ActionButton btn-color="red">Delete</ActionButton>
-          <ActionButton btn-color="purple">Mark as Paid</ActionButton>
+
+          <ActionButton
+            btn-color="purple"
+            @click-action="handleChangeInvoiceStatus(newStatus)"
+          >
+            Mark as {{ newStatus[0].toUpperCase() + newStatus.slice(1) }}
+          </ActionButton>
         </div>
       </div>
 
@@ -112,12 +118,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type Ref, onMounted } from 'vue';
+import { ref, type Ref, onMounted, computed } from 'vue';
 import Invoice from '@/models/Invoice';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
-import { getSingleInvoice } from '@/services/invoiceService';
+import { getSingleInvoice, changeInvoiceStatus } from '@/services/invoiceService';
 import { useInvoiceStore } from '@/stores/invoiceStore';
 import { useFormatDate } from '@/composables/dateFormatting';
+import { InvoiceStatusEnum } from '@/enums/InvoiceStatusEnum';
 
 import ViewContainer from '@/components/ViewContainer.vue';
 import DataLoader from '@/components/loaders/DataLoader.vue';
@@ -146,4 +153,27 @@ onMounted(async (): Promise<void> => {
     router.push({ name: 'homepage' });
   }
 });
+
+/** Return new status based on prop value */
+const newStatus = computed<string>(() => store.currentInvoice.status === InvoiceStatusEnum.PAID
+  ? InvoiceStatusEnum.DRAFT
+  : InvoiceStatusEnum.PAID
+);
+
+/**
+ * Change current invoice status
+ * @param {string} newStatus new status to set
+ */
+const handleChangeInvoiceStatus = async (newStatus: string): Promise<void> => {
+  isDataLoaded.value = false;
+
+  try {
+    const invoice: Invoice = await changeInvoiceStatus(store.currentInvoice.invoiceId, newStatus);
+    store.currentInvoice.status = invoice.status;
+    isDataLoaded.value = true;
+  } catch (e) {
+    console.warn(e);
+    router.go(0); // If there is problem with changing data, refresh page
+  }
+};
 </script>
