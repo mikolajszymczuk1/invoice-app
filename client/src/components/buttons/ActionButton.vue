@@ -42,8 +42,8 @@ const emit = defineEmits<{
 /** Returns buttons colors classes based on `btnColor` prop */
 const btnColors = computed<string>(() => {
   const lightColors = 'bg-blue-itemsPrev hover:bg-blue-itemsPrev/60 text-blue-light';
-  const redColors = 'bg-red-medium hover:bg-red-medium/60 text-white';
-  const purpleColors = 'bg-purple-medium hover:bg-purple-medium text-white';
+  const redColors = 'bg-red-medium hover:bg-red-medium/60 text-trueWhite';
+  const purpleColors = 'bg-purple-medium hover:bg-purple-medium text-trueWhite';
 
   switch (props.btnColor) {
     case 'light': return lightColors;

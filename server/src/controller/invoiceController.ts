@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getAllInvoices, getSingleInvoice, changeInvoiceStatus } from '@/db/dbServices';
+import { getAllInvoices, getSingleInvoice, changeInvoiceStatus, deleteInvoice } from '@/db/dbServices';
 
 /**
  * Get all invoices action to get all invoices from database
@@ -40,5 +40,19 @@ export const changeInvoiceStatusAction = async (req: Request, res: Response): Pr
     res.status(200).json(result);
   } catch (e) {
     res.status(500).json({ error: 'There is the problem with invoice update operation' });
+  }
+};
+
+/**
+ * Delete invoice action
+ * @param {Request} req Request
+ * @param {Response} res Response
+ */
+export const deleteInvoiceAction = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const result = await deleteInvoice(req.params.invoiceId);
+    res.status(200).json(result);
+  } catch (e) {
+    res.status(500).json({ error: 'There is the problem with invoice delete operation' });
   }
 };
