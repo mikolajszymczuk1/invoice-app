@@ -16,7 +16,7 @@
     </div>
 
     <div class="row-start-2 row-end-3 col-start-1 col-end-2 mb-[8px] text-blue-light text-[.75rem] font-medium md:mb-0 md:row-start-1 md:row-end-1 md:col-start-2 md:col-end-3">
-      Due {{ paymentDate }}
+      Due {{ Invoice.formatDate(paymentDue) }}
     </div>
 
     <div class="row-start-3 row-end-4 col-start-1 col-end-2 text-blue-dark font-bold md:row-start-1 md:row-end-2 md:col-start-4 md:col-end-5 md:mr-[40px] md:justify-self-end">
@@ -35,12 +35,12 @@
 
 <script setup lang="ts">
 import { InvoiceStatusEnum } from '@/enums/InvoiceStatusEnum';
-import { useFormatDate } from '@/composables/dateFormatting';
+import Invoice from '@/models/Invoice';
 
 import InvoiceStatus from '@/components/InvoiceStatus.vue';
 import DropDownArrowIcon from '@/components/icons/DropDownArrowIcon.vue';
 
-const props = defineProps({
+defineProps({
   invoiceId: {
     type: String,
     default: '',
@@ -71,7 +71,4 @@ const emit = defineEmits<{
   /** Emit event after click invoice */
   (e: 'clickAction'): void
 }>();
-
-/** Payment formatted date */
-const { stringDate: paymentDate } = useFormatDate(props.paymentDue);
 </script>

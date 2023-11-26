@@ -55,10 +55,10 @@
           <div class="flex gap-x-[41px] md:gap-x-[98px]">
             <div>
               <p class="mb-[12px]">Invoice Data</p>
-              <p class="mb-[32px] text-blue-dark font-bold text-[.9375rem]">{{ invoiceDate }}</p>
+              <p class="mb-[32px] text-blue-dark font-bold text-[.9375rem]">{{ Invoice.formatDate(store.currentInvoice.invoiceDate) }}</p>
 
               <p class="mb-[12px]">Payment Due</p>
-              <p class="text-blue-dark font-bold text-[.9375rem]">{{ paymentDue }}</p>
+              <p class="text-blue-dark font-bold text-[.9375rem]">{{ Invoice.formatDate(store.currentInvoice.paymentDue) }}</p>
             </div>
 
             <div>
@@ -136,7 +136,6 @@ import Invoice from '@/models/Invoice';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
 import { getSingleInvoice, changeInvoiceStatus, deleteInvoice } from '@/services/invoiceService';
 import { useInvoiceStore } from '@/stores/invoiceStore';
-import { useFormatDate } from '@/composables/dateFormatting';
 import { InvoiceStatusEnum } from '@/enums/InvoiceStatusEnum';
 
 import ViewContainer from '@/components/ViewContainer.vue';
@@ -152,10 +151,6 @@ const store = useInvoiceStore();
 
 /** Invoice data load status */
 const isDataLoaded: Ref<boolean> = ref(false);
-
-/** Formatted dates */
-const { stringDate: invoiceDate } = useFormatDate(store.currentInvoice.invoiceDate);
-const { stringDate: paymentDue } = useFormatDate(store.currentInvoice.paymentDue);
 
 onMounted(async (): Promise<void> => {
   try {
