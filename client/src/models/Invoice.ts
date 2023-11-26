@@ -69,5 +69,19 @@ export default class Invoice {
     return date.getTime();
   }
 
+  /**
+   * Convert timestamp to user friendly string
+   * @param {number} timestamp timestamp to convert
+   * @returns {string} user friendly string with date
+  */
+  public static formatDate(timestamp: number): string {
+    let stringDate: string= '';
+    const date = new Date(timestamp);
+    const formattedDate = date.toLocaleString('default', { day: 'numeric',  month: 'short', year: 'numeric' });
+    const parts = formattedDate.replace(',', '').split(' ');
+    stringDate = `${parts[1]} ${parts[0]} ${parts[2]}`;
+    return stringDate;
+  }
+
   // TODO: Implement method to generate an invoice ID.
 }
